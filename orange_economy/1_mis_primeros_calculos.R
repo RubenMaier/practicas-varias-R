@@ -122,7 +122,7 @@ colSums(matriz_tiempo)
 # VIDEO 2.5 #
 #############
 
-# aprendamos mas agregando una actividad nueva como oir un podcast cada día, es decir, nueva fila
+# aprendamos mas agregando una actividad nueva como oir un podcast cada dia, es decir, nueva fila
 # debemos usar rbind que nos a?ade un nuevo vector como fila a nuestra matriz
 matriz_final <- rbind(matriz_tiempo, c(10,15,30,5,0))
 colSums(matriz_final)
@@ -158,14 +158,14 @@ orangeec[orangeec$Creat.Ind...GDP<=2,]
 
 # hagamos subsettings
 # paises que tienen mas de un 80% de su poblaccion con acceso a internet y ademas mas del 4,5%
-# de su PBI está destinado en educación
+# de su PBI esta destinado en educacion
 neworangeec <- subset(orangeec, Internet.penetration...population > 80
                       & Education.invest...GDP >= 4.5)
 neworangeec
 
-# ahora queremos saber el porcentaje de PBI que aportan por economía naranja aquellos
+# ahora queremos saber el porcentaje de PBI que aportan por economia naranja aquellos
 # paises que tienen mas de un 80% de su poblaccion con acceso a internet y ademas mas del 4,5%
-# de su PBI está destinado en educación
+# de su PBI esta destinado en educacion
 neworangeec <- subset(orangeec, Internet.penetration...population > 80
                                  & Education.invest...GDP >= 4.5,
                       select = Creat.Ind...GDP)
@@ -175,7 +175,7 @@ neworangeec
 # install.packages("plyr")
 # library(plyr)
 rename(orangeec, c("Creat.Ind...GDP" = "AporteEcNja"))
-                   
+
 #############
 # VIDEO 2.5 #
 #############
@@ -211,7 +211,7 @@ new_lista
 
 # grafico de barras -> ordenado por tamaÃ±o de barra de mayor a menor
 # histograma -> sigue el patron del eje
-# grafica de disperción o scatter plot -> solo numeros en cada eje y los puntos no se pueden unir
+# grafica de dispercion o scatter plot -> solo numeros en cada eje y los puntos no se pueden unir
 # grafica de lineas -> idem que antes pero sin las restricciones
 # box plot -> rectangulo compuesto por 1/4, 1/2 y 3/4, con minimo y maximo extendidos por una linea
 
@@ -306,7 +306,7 @@ ggplot() +
                  fill="blue", # barritas de color azul
                  color="red", # y un contorno rojo
                  binwidth = 2000)  + # ancho de banda de a 2000 dolares
-  labs(x="pib per cápita", 
+  labs(x="pib per capita", 
        y="cantidad de paises",
        title="PIB per capita en apises de latam") +
   theme(legend.position = "none") +
@@ -315,39 +315,39 @@ ggplot() +
         panel.grid.minor = element_blank())
 # Aporte de 20.000 dolares solo 2 paises aportan 
   
-# ¿como está distribuido el aporte de la economía naranja al PIB en cada país?
+# como esta distribuido el aporte de la economia naranja al PIB en cada pais?
 ggplot() +
   geom_histogram(data=orangeec,
                  aes(x=Creat.Ind...GDP), # queremos ver la variable PIB PER CAPITA
                  fill="blue", # barritas de color azul
                  color="red", # y un contorno rojo
-                 binwidth = 1)  + # porque el valor está dado en porcentaje (vamos de 1% por barra)
-  labs(x="aporte economía naranja al pib(%)", 
+                 binwidth = 1)  + # porque el valor esta dado en porcentaje (vamos de 1% por barra)
+  labs(x="aporte economia naranja al pib(%)", 
        y="cantidad de paises",
-       title="Contribución economía naranja al PIB en paises de latam") +
+       title="Contribucion economia naranja al PIB en paises de latam") +
   theme(legend.position = "none") +
   theme(panel.background = element_blank(),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank())
 # 1 pais que aporta el 6% y otro el 7% al PIB
 
-# distribucción de frecuencias en cuanto a la penetración de internet
+# distribuccion de frecuencias en cuanto a la penetracion de internet
 ggplot() +
   geom_histogram(data=orangeec,
                  aes(x=Internet.penetration...population), # queremos ver la variable PIB PER CAPITA
                  fill="red", # barritas de color azul
                  color="yellow", # y un contorno rojo
                  binwidth = 5)  + # valor en porcentaje (vamos de a 5% por barra)
-  labs(x="penetración de internet como (%) de la población", 
+  labs(x="penetracion de internet como (%) de la poblacion", 
        y="cantidad de paises",
-       title="penetración de internet en paises de latam") +
+       title="penetracion de internet en paises de latam") +
   theme(legend.position = "none") +
   theme(panel.background = element_blank(),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank())
 # el 60% de un pais tiene acceso a internet
-# paises con pentración del 80% hay 2
-# no hay paises con un 55% de penetración de internet
+# paises con pentracion del 80% hay 2
+# no hay paises con un 55% de penetracion de internet
 
 # idem pero con todas las barras/labels porcentuadas
 ggplot() +
@@ -356,9 +356,9 @@ ggplot() +
                  fill="red", # barritas de color azul
                  color="yellow", # y un contorno rojo
                  binwidth = 5)  + # valor en porcentaje (vamos de a 5% por barra)
-  labs(x="penetración de internet como (%) de la población", 
+  labs(x="penetracion de internet como (%) de la poblacion", 
        y="cantidad de paises",
-       title="penetración de internet en paises de latam") +
+       title="penetracion de internet en paises de latam") +
   xlim(30,100) + # numeramos del 30% al 100% 
   ylim(0,4) + # ponemos en el eje Y valores del 0 al 4
   scale_x_continuous(breaks = seq(30,100,by=5)) + # le colocamos valores a cada barras (que van del 30% al 100%) cada 5%
@@ -388,11 +388,11 @@ boxplot(mtcars$hp,
 ggplot(mtcars,
        aes(x=as.factor(cyl), # convierto el valor de x que es numerico a categorico para que no tire error y nos muestre 3 box-plot y no 1 solo
            y=hp,
-           fill=cyl)) + # las cajitas queremos que se nos rellene con la información de los cilindros
+           fill=cyl)) + # las cajitas queremos que se nos rellene con la informacion de los cilindros
   geom_boxplot() + 
   labs(x="cilindros",
        y="caballos de fuerza",
-       title="caballos de fuerza según cilindros en mtcars") +
+       title="caballos de fuerza segun cilindros en mtcars") +
   theme(legend.position = "none") +
   theme(panel.background = element_blank(),
         panel.grid.major = element_blank(),
@@ -403,11 +403,11 @@ ggplot(mtcars,
 ggplot(mtcars,
        aes(x=as.factor(cyl), # convierto el valor de x que es numerico a categorico para que no tire error y nos muestre 3 box-plot y no 1 solo
            y=hp,
-           fill=cyl)) + # las cajitas queremos que se nos rellene con la información de los cilindros
+           fill=cyl)) + # las cajitas queremos que se nos rellene con la informacion de los cilindros
   geom_boxplot(alpha=0.6) + # alpha me vuelve medio transparente todo los boxplot
   labs(x="cilindros",
        y="caballos de fuerza",
-       title="caballos de fuerza según cilindros en mtcars") +
+       title="caballos de fuerza segun cilindros en mtcars") +
   theme(legend.position = "none") +
   theme(panel.background = element_blank(),
         panel.grid.major = element_blank(),
@@ -430,8 +430,8 @@ ggplot(mtcars,
            fill=am)) +
   geom_boxplot() +
   labs(x="tipo de caja",
-       y="millas por galón",
-       title="millas por galón según tipo de caja (mtcars)") +
+       y="millas por galon",
+       title="millas por galon segun tipo de caja (mtcars)") +
   theme(legend.position = "none") +
   theme(panel.background = element_blank(),
         panel.grid.major = element_blank(),
@@ -442,9 +442,9 @@ ggplot(mtcars,
 #############
 
 # en el dataset de economia naranja la unica variable categorica es la de "nombre de pais"
-# el resto es toda numérica, entonces no podriamos hacer ningun cruce entre campos numéricos
+# el resto es toda numerica, entonces no podriamos hacer ningun cruce entre campos numericos
 
-# hagamos una clasificacion de paises segun el PIB, que grupos de paises están por encima de un promedio y cual por debajo
+# hagamos una clasificacion de paises segun el PIB, que grupos de paises estan por encima de un promedio y cual por debajo
 # mean nos calcula el promedio de una variable
 economia <- mean(orangeec$GDP.PC)
 economia
@@ -454,8 +454,8 @@ orangeec <- orangeec %>% # al mismo dataset que lo vamos a pasar a...
   mutate(economia_fuerte = ifelse(GDP.PC < economia, # el dataset va a mutar y se va a agrandar
                                   "Por debajo del promedio",
                                   "sobre el promedio de pib per capita"))
-# si observamos el dataset, ahora notaremos que añadimos una variable nueva que es de tipo categorica
-# esta va a tener el resultado de la mutación que hicimos antes
+# si observamos el dataset, ahora notaremos que aÃ±adimos una variable nueva que es de tipo categorica
+# esta va a tener el resultado de la mutacion que hicimos antes
 
 ggplot(orangeec, aes(x=economia_fuerte, 
                      y=Creat.Ind...GDP, 
@@ -475,8 +475,8 @@ ggplot(orangeec, aes(x=economia_fuerte,
                      fill=economia_fuerte)) +
   geom_boxplot(alpha=0.4) +
   labs(x="tipo de pais",
-       y="penetración de internet(%)",
-       title="penetración de internet en paises latam con aalto y bajo pib per cápita") +
+       y="penetracion de internet(%)",
+       title="penetracion de internet en paises latam con aalto y bajo pib per capita") +
   theme(legend.position = "none") +
   theme(panel.background = element_blank(),
         panel.grid.major = element_blank(),
@@ -485,15 +485,15 @@ ggplot(orangeec, aes(x=economia_fuerte,
 # quartil uno (Q1) (25% de los datos)
 # Q2 o mediana (el 50% de los datos)
 # Q3 (75% de los datos)
-# Rango intercuartílico RIC (Q3-Q1)
-# Se consideran atípicos(outliers) los valores inferiores a (Q1-1.5·RIC) o superiores a (Q3+1.5·RIC)
-# Se pueden considerar valores extremadamente atípicos aquellos que exceden (Q1- 3·RIC) o (Q3+3·RIC)
+# Rango intercuartilico RIC (Q3-Q1)
+# Se consideran atipicos(outliers) los valores inferiores a (Q1-1.5ï¿½RIC) o superiores a (Q3+1.5ï¿½RIC)
+# Se pueden considerar valores extremadamente atipicos aquellos que exceden (Q1- 3ï¿½RIC) o (Q3+3ï¿½RIC)
 
 #############
 # VIDEO 3.8 #
 #############
 
-# grafica de disperción
+# grafica de dispercion
 # usamos ggplot
 
 ggplot(mtcars,
